@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://i.ibb.co/C97xxVM/FITZONE-20240920-170320-0000-photoaidcom-cropped.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('back.jpg') no-repeat center center;
+            color: #ff0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #ff0000;
+            width: 400px;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.8); /* Enhanced glowing effect */
+            margin: 20px;
+            
+        }
+        
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff0000;
+            text-shadow: 0 0 6px rgba(255, 0, 0, 0.8); /* Light red text glow */
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ff0000;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="email"],
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ff0000;
+            border-radius: 4px;
+            background-color: #000000;
+            color: #ffffff;
+            box-shadow: 0 0 6px rgba(255, 0, 0, 0.6); /* Enhanced glowing effect */
+        }
+        .form-container input[type="submit"] {
+            width: 100%;
+            background-color: #ff0000;
+            color: #000000;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 6px rgba(255, 0, 0, 0.6); /* Enhanced glowing effect */
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #ff3333;
+        }
+    
+
+
+
+    </style>
+</head>
+<body>
+<nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">☰</label>
+    <div class="logo-container">
+        <img src="logosh.png" alt="FitZone Logo" class="logo-img">
+        <label class="logo-text">HomeTutors4U</label>
+    </div>
+    <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+</nav>
+
+<div class="form-container">
+    <h2>Find Your Tutor</h2>
+    <form action="https://script.google.com/macros/s/AKfycby6--Qr0vX0k0dZPWSa7tSf_BsXY1Jp1T1yFBUNrrD81NldVoT0g-Afkth5zPXpeUcuGQ/exec" method="POST" onsubmit="redirectAfterSubmission(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+        
+        <label for="class">Classes:</label>
+        <input type="text" id="class" name="class" required>
+        
+        <label for="city">City:</label>
+        <select id="city" name="city" required onchange="showOtherCityInput()">
+            <option value="" disabled selected>Select your city</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Pune">Pune</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Surat">Surat</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <div id="other-city-container" style="display:none;">
+            <label for="other-city">Please specify your city:</label>
+            <input type="text" id="other-city" name="other-city">
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+<script>
+    function showOtherCityInput() {
+        var citySelect = document.getElementById("city");
+        var otherCityContainer = document.getElementById("other-city-container");
+        if (citySelect.value === "Other") {
+            otherCityContainer.style.display = "block";
+        } else {
+            otherCityContainer.style.display = "none";
+        }
+    }
+
+    function redirectAfterSubmission(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        const form = event.target;
+    
+        // Submit the form data manually
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirect to a new page
+                window.location.href = "thankyou.html"; // Replace with your desired URL
+            } else {
+                alert("There was an issue submitting your form. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+        });
+    }
+    </script>
+    
+</body>
+</html>
