@@ -6,7 +6,7 @@
     <title>Stylish Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://i.ibb.co/C97xxVM/FITZONE-20240920-170320-0000-photoaidcom-cropped.png" type="image/png">
+    <link rel="icon" href="logosh.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,7 +89,7 @@
         <li><a href="feedback.html">Feedback</a></li>
     </ul>
 </nav>
-
+<br><br><br><br>
 <div class="form-container">
     <h2>Find Your Tutor</h2>
     <form action="https://script.google.com/macros/s/AKfycby6--Qr0vX0k0dZPWSa7tSf_BsXY1Jp1T1yFBUNrrD81NldVoT0g-Afkth5zPXpeUcuGQ/exec" method="POST" onsubmit="redirectAfterSubmission(event)">
@@ -116,25 +116,32 @@
         <input type="text" id="class" name="class" required>
         
         <label for="city">City:</label>
-        <select id="city" name="city" required onchange="showOtherCityInput()">
-            <option value="" disabled selected>Select your city</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Bengaluru">Bengaluru</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Ahmedabad">Ahmedabad</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Kolkata">Kolkata</option>
-            <option value="Pune">Pune</option>
-            <option value="Jaipur">Jaipur</option>
-            <option value="Surat">Surat</option>
-            <option value="Other">Other</option>
+        <select id="city" name="city" required>
+            <option value="" disabled>Select your city</option>
+            <option value="Delhi" selected>Delhi NCR</option>
         </select>
+        
 
-        <div id="other-city-container" style="display:none;">
-            <label for="other-city">Please specify your city:</label>
-            <input type="text" id="other-city" name="other-city">
-        </div>
+        <label for="city">Area:</label>
+<select id="city" name="city" required onchange="showOtherCityInput()">
+    <option value="" disabled selected>Select your area</option>
+    <option value="Mumbai">Shaheen Bagh</option>
+    <option value="Delhi">Batla House</option>
+    <option value="Bengaluru">Zakir Nagar</option>
+    <option value="Hyderabad">Noida</option>
+    <option value="Ahmedabad">Ahmedabad</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Kolkata">Kolkata</option>
+    <option value="Pune">Pune</option>
+    <option value="Jaipur">Jaipur</option>
+    <option value="Surat">Surat</option>
+    <option value="Other">Other</option>
+</select>
+
+<div id="other-city-container" style="display: none;">
+    <label for="other-city">Please specify your city:</label>
+    <input type="text" id="other-city" name="other_city">
+</div>
 
         <input type="submit" value="Submit">
     </form>
